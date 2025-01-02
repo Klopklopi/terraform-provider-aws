@@ -922,6 +922,39 @@ service "bcmdataexports" {
   brand                    = "AWS"
 }
 
+service "billing" {
+  go_packages {
+    v2_package = "billing"
+  }
+
+  sdk {
+    id = "billing"
+  }
+
+  names {
+    provider_name_upper = "Billing"
+    human_friendly      = "Billing"
+  }
+
+  client {
+    skip_client_generate = true
+  }
+
+  endpoint_info {
+    endpoint_api_call = "ListBillingViews"
+    endpoint_region_override = "us-east-1"
+  }
+  
+  resource_prefix {
+    correct = "aws_billing_"
+  }
+  provider_package_correct = "billing"
+  doc_prefix               = ["billing_"]
+  brand                    = "AWS"
+  not_implemented          = true
+}
+
+
 service "billingconductor" {
   go_packages {
     v1_package = "billingconductor"
